@@ -1,0 +1,147 @@
+package com.khoders.smartchurch.entities;
+
+import com.khoders.resource.enums.Title;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "memberships")
+public class Membership extends UserAccountRecord implements Serializable
+{
+	@Column(name = "firstname")
+	private String firstname;
+	
+	@Column(name = "surname")
+	private String surname;
+	
+	@Column(name = "lastname")
+	private String lastname;
+	
+	@Column(name = "birth_date")
+	private LocalDate birthDate;
+
+	@Column(name = "address_location")
+	private String addressLocation;
+
+	@Column(name = "title")
+	@Enumerated(EnumType.STRING)
+	private Title title;
+
+	@Column(name = "phone_number")
+	private String phoneNumber;
+
+	@Column(name = "occupation")
+	private String occupation;
+
+	@JoinColumn(name = "position", referencedColumnName = "id")
+	@ManyToOne
+	private Position position;
+
+	@Column(name = "emergency_number")
+	private String emergencyNumber;
+
+    @Column(name = "profile_photo")
+	private byte[] profileImage;
+
+	@Lob
+	@Column(name = "description")
+	private String description;
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getAddressLocation() {
+		return addressLocation;
+	}
+
+	public void setAddressLocation(String addressLocation) {
+		this.addressLocation = addressLocation;
+	}
+
+	public Title getTitle() {
+		return title;
+	}
+
+	public void setTitle(Title title) {
+		this.title = title;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmergencyNumber() {
+		return emergencyNumber;
+	}
+
+	public void setEmergencyNumber(String emergencyNumber) {
+		this.emergencyNumber = emergencyNumber;
+	}
+
+	public byte[] getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(byte[] profileImage) {
+		this.profileImage = profileImage;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+}
